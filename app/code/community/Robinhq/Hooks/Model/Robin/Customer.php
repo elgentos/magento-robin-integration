@@ -39,6 +39,7 @@ class Robinhq_Hooks_Model_Robin_Customer
                 'total_spent' => $formattedTotalSpent,
                 'panel_view' => [
                         'Reward_points' => $rewardPoints,
+                        'Country_origin' => $this->getCustomerCountry($customer),
                 ],
                 'name' => $customer->getName(),
                 'currency' => Mage::app()
@@ -70,7 +71,7 @@ class Robinhq_Hooks_Model_Robin_Customer
     /**
      * Returns the phone number. When getBillingTelephone returns null
      * it loads the default billing address and retrieves the telephone
-     * number from there. When both are null, it'll return an emtpy string.
+     * number from there. When both are null, it will return an empty string.
      *
      * @param Mage_Customer_Model_Customer $customer
      * @param Robinhq_Hooks_Helper_Data $helper
@@ -84,6 +85,24 @@ class Robinhq_Hooks_Model_Robin_Customer
         }
 
         return $helper->formatPhoneNumber($billing->getTelephone(), $billing->getCountryId());
+    }
+
+    /**
+     * Returns country name based on country 2 letter ISO code. When default
+     * billing address is null, it will return an empty string.
+     *
+     * @param Mage_Customer_Model_Customer $customer
+     * @return string
+     */
+    protected function getCustomerCountry(Mage_Customer_Model_Customer $customer)
+    {
+        $billing = $customer->getDefaultBillingAddress();
+        if (!$billing) {
+            return '';
+        }
+
+        return Mage::getModel('directory/country')->loadByCode($billing->getCountryId())
+            ->getName();
     }
 
 }
