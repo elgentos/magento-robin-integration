@@ -252,8 +252,7 @@ class Robinhq_Hooks_Model_Robin_Order
     {
         return Mage::helper('robinhq_hooks')
                 ->getUrl('adminhtml/sales_order/view', [
-                        'order_id' => $order->getId(),
-                        '_type' => Mage_Core_Model_Store::URL_TYPE_WEB,
+                        'order_id' => $order->getId()
                 ]);
     }
 
@@ -267,8 +266,7 @@ class Robinhq_Hooks_Model_Robin_Order
     {
         return Mage::helper('robinhq_hooks')
                 ->getUrl('adminhtml/sales_shipment/view', [
-                        'shipment_id' => $shipment->getId(),
-                        '_type' => Mage_Core_Model_Store::URL_TYPE_WEB,
+                        'shipment_id' => $shipment->getId()
                 ]);
     }
 
@@ -306,8 +304,7 @@ class Robinhq_Hooks_Model_Robin_Order
     {
         return Mage::helper('robinhq_hooks')
                 ->getUrl('adminhtml/sales_invoice/view', [
-                        'invoice_id' => $invoice->getId(),
-                        '_type' => Mage_Core_Model_Store::URL_TYPE_WEB,
+                        'invoice_id' => $invoice->getId()
                 ]);
     }
 
