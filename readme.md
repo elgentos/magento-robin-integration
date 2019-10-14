@@ -1,3 +1,7 @@
+# elgentos fork of magento-robin-integration
+
+Used internally, see https://packagist.com/orgs/elgentos/packages/26332
+
 *THIS README NEEDS MORE UPDATING*
 
 
